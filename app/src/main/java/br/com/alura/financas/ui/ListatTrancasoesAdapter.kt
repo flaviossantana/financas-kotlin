@@ -6,20 +6,32 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import br.com.alura.financas.R
+import br.com.alura.financas.model.Transacao
+import br.com.alura.financas.util.datautil.diaMesAno
+import kotlinx.android.synthetic.main.transacao_item.view.*
 
-class ListatTrancasoesAdapter(transacoes: List<String>,
+class ListatTrancasoesAdapter(transacoes: List<Transacao>,
                               context: Context) : BaseAdapter() {
 
     private val transacoes = transacoes;
     private val context = context
 
     override fun getView(posicao: Int, view: View?, parent: ViewGroup?): View {
-        return LayoutInflater.from(context).inflate(R.layout.transacao_item, parent, false)
+        val transacaoView: View = LayoutInflater.from(context).inflate(R.layout.transacao_item, parent, false)
+
+        val transacao = getItem(posicao)
+
+        transacaoView.transacao_valor.setText(transacao.getValor().toString())
+        transacaoView.transacao_categoria.setText(transacao.getCategoria())
+        transacaoView.transacao_data.setText(diaMesAno(transacao.getData().time))
+
+
+        return  transacaoView
 
     }
 
-    override fun getItem(posicao: Int): String {
-        return transacoes[posicao]
+    override fun getItem(posicao: Int): Transacao {
+        return transacoes.get(posicao)
     }
 
     override fun getItemId(posicao: Int): Long {
