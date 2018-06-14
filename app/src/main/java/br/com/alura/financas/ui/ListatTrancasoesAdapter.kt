@@ -21,9 +21,9 @@ class ListatTrancasoesAdapter(transacoes: List<Transacao>,
 
         val transacao = getItem(posicao)
 
-        transacaoView.transacao_valor.setText(transacao.getValor().toString())
-        transacaoView.transacao_categoria.setText(transacao.getCategoria())
-        transacaoView.transacao_data.setText(DataUtil.diaMesAno(transacao.getData().time))
+        transacaoView.transacao_valor.setText(transacao.valor.toString())
+        transacaoView.transacao_categoria.setText(transacao.categoria)
+        transacaoView.transacao_data.setText(DataUtil.diaMesAno(transacao.data.time))
 
         return  transacaoView
 
