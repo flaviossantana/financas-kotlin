@@ -24,8 +24,10 @@ class ListatTrancasoesAdapter(transacoes: List<Transacao>,
         val transacao : Transacao = getItem(posicao)
 
         transacaoView.transacao_icone.setBackgroundResource(transacao.icone())
+
         transacaoView.transacao_valor.text = transacao.valor.formatarReal()
         transacaoView.transacao_valor.setTextColor(ContextCompat.getColor(context, transacao.corValor()))
+
         transacaoView.transacao_categoria.text = transacao.categoria
         transacaoView.transacao_data.text = transacao.data.diaMesAno()
 
