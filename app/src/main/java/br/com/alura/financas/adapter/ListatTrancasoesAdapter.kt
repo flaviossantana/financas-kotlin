@@ -1,6 +1,7 @@
 package br.com.alura.financas.adapter
 
 import android.content.Context
+import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,9 +21,11 @@ class ListatTrancasoesAdapter(transacoes: List<Transacao>,
     override fun getView(posicao: Int, view: View?, parent: ViewGroup?): View {
         val transacaoView: View = LayoutInflater.from(context).inflate(R.layout.transacao_item, parent, false)
 
-        val transacao = getItem(posicao)
+        val transacao : Transacao = getItem(posicao)
 
+        transacaoView.transacao_icone.setBackgroundResource(transacao.icone())
         transacaoView.transacao_valor.text = transacao.valor.formatarReal()
+        transacaoView.transacao_valor.setTextColor(ContextCompat.getColor(context, transacao.corValor()))
         transacaoView.transacao_categoria.text = transacao.categoria
         transacaoView.transacao_data.text = transacao.data.diaMesAno()
 
