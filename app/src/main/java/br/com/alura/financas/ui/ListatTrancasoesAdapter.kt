@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import br.com.alura.financas.R
 import br.com.alura.financas.model.Transacao
-import br.com.alura.financas.util.datautil.DataUtil
+import br.com.alura.financas.util.DataUtil
+import br.com.alura.financas.util.MoedaUtil
 import kotlinx.android.synthetic.main.transacao_item.view.*
 
 class ListatTrancasoesAdapter(transacoes: List<Transacao>,
@@ -21,9 +22,9 @@ class ListatTrancasoesAdapter(transacoes: List<Transacao>,
 
         val transacao = getItem(posicao)
 
-        transacaoView.transacao_valor.setText(transacao.valor.toString())
-        transacaoView.transacao_categoria.setText(transacao.categoria)
-        transacaoView.transacao_data.setText(DataUtil.diaMesAno(transacao.data.time))
+        transacaoView.transacao_valor.text = MoedaUtil.formatarValor(transacao.valor)
+        transacaoView.transacao_categoria.text = transacao.categoria
+        transacaoView.transacao_data.text = DataUtil.diaMesAno(transacao.data.time)
 
         return  transacaoView
 

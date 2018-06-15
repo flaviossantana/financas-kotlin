@@ -1,4 +1,4 @@
-package br.com.alura.financas.util.datautil
+package br.com.alura.financas.util
 
 import java.text.SimpleDateFormat
 import java.util.*
