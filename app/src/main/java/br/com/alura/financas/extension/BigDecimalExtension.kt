@@ -7,5 +7,5 @@ import java.util.*
 
 fun BigDecimal.formatarReal(): String {
     val formatroBrasil: NumberFormat = DecimalFormat.getCurrencyInstance(Locale("pt", "bt"));
-    return formatroBrasil.format(this).replace("BTN", "")
+    return formatroBrasil.format(this).replace("BTN", "R$ ")
 }

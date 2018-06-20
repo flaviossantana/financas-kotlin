@@ -10,6 +10,7 @@ import br.com.alura.financas.R
 import br.com.alura.financas.model.Transacao
 import br.com.alura.financas.extension.diaMesAno
 import br.com.alura.financas.extension.formatarReal
+import br.com.alura.financas.extension.limitarEmAte
 import kotlinx.android.synthetic.main.transacao_item.view.*
 
 class ListatTrancasoesAdapter(transacoes: List<Transacao>,
@@ -17,6 +18,8 @@ class ListatTrancasoesAdapter(transacoes: List<Transacao>,
 
     private val transacoes = transacoes;
     private val context = context
+
+    private val TAMANHO_MAXIMO = 14
 
     override fun getView(posicao: Int, view: View?, parent: ViewGroup?): View {
         val transacaoView: View = LayoutInflater.from(context).inflate(R.layout.transacao_item, parent, false)
@@ -28,7 +31,7 @@ class ListatTrancasoesAdapter(transacoes: List<Transacao>,
         transacaoView.transacao_valor.text = transacao.valor.formatarReal()
         transacaoView.transacao_valor.setTextColor(ContextCompat.getColor(context, transacao.corValor()))
 
-        transacaoView.transacao_categoria.text = transacao.categoria
+        transacaoView.transacao_categoria.text = transacao.categoria.limitarEmAte(TAMANHO_MAXIMO)
         transacaoView.transacao_data.text = transacao.data.diaMesAno()
 
         return  transacaoView

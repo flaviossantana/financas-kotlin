@@ -10,7 +10,7 @@ import java.util.*
 
 class Transacao(val tipo: Tipo,
                 val valor: BigDecimal,
-                val categoria: String = "INDEFINIDA",
+                val categoria: String = "CATEGORIA INDEFINIDA",
                 val data: Calendar = Calendar.getInstance()) {
 
     fun isReceita(): Boolean {
