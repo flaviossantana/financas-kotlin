@@ -13,17 +13,14 @@ import br.com.alura.financas.extension.formatarReal
 import br.com.alura.financas.extension.limitarEmAte
 import kotlinx.android.synthetic.main.transacao_item.view.*
 
-class ListatTrancasoesAdapter(transacoes: List<Transacao>,
-                              context: Context) : BaseAdapter() {
-
-    private val transacoes = transacoes;
-    private val context = context
+class ListatTrancasoesAdapter(private val transacoes: List<Transacao>,
+                              private val context: Context) : BaseAdapter() {
 
     private val TAMANHO_MAXIMO = 14
 
     override fun getView(posicao: Int, view: View?, parent: ViewGroup?): View {
-        val transacaoView: View = LayoutInflater.from(context).inflate(R.layout.transacao_item, parent, false)
 
+        val transacaoView: View = LayoutInflater.from(context).inflate(R.layout.transacao_item, parent, false)
         val transacao : Transacao = getItem(posicao)
 
         transacaoView.transacao_icone.setBackgroundResource(transacao.icone())
