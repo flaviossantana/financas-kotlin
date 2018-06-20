@@ -5,6 +5,8 @@ import br.com.alura.financas.R.color.receita
 import br.com.alura.financas.R.drawable.icone_transacao_item_despesa
 import br.com.alura.financas.R.drawable.icone_transacao_item_receita
 import br.com.alura.financas.enum.Tipo
+import br.com.alura.financas.enum.Tipo.DESPESA
+import br.com.alura.financas.enum.Tipo.RECEITA
 import java.math.BigDecimal
 import java.util.*
 
@@ -14,7 +16,11 @@ class Transacao(val tipo: Tipo,
                 val data: Calendar = Calendar.getInstance()) {
 
     fun isReceita(): Boolean {
-        return tipo == Tipo.RECEITA
+        return RECEITA.equals(tipo)
+    }
+
+    fun isDespesa(): Boolean {
+        return DESPESA.equals(tipo)
     }
 
     fun corValor(): Int {
