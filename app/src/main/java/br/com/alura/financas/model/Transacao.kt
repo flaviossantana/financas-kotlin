@@ -23,6 +23,10 @@ class Transacao(val tipo: Tipo,
         return DESPESA.equals(tipo)
     }
 
+    fun isTipo(tipo: Tipo): Boolean {
+        return tipo.equals(this.tipo)
+    }
+
     fun corValor(): Int {
         return if(isReceita()) receita else  despesa
     }
