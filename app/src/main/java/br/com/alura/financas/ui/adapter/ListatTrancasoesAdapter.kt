@@ -1,4 +1,4 @@
-package br.com.alura.financas.adapter
+package br.com.alura.financas.ui.adapter
 
 import android.content.Context
 import android.support.v4.content.ContextCompat
