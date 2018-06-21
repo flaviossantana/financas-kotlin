@@ -1,5 +1,9 @@
 package br.com.alura.financas.model
 
+import android.content.Context
+import android.support.v4.content.ContextCompat
+import br.com.alura.financas.R.color.despesa
+import br.com.alura.financas.R.color.receita
 import br.com.alura.financas.enum.Tipo
 import br.com.alura.financas.enum.Tipo.DESPESA
 import br.com.alura.financas.enum.Tipo.RECEITA
@@ -17,6 +21,28 @@ class Resumo(private val transacoes: List<Transacao>) {
 
     fun total(): BigDecimal{
         return receita().subtract(despesa())
+    }
+
+    fun corDespesa(context: Context): Int {
+        return getColor(context, despesa)
+    }
+
+    fun corReceita(context: Context): Int {
+        return getColor(context, receita)
+    }
+
+    fun corTotal(context: Context): Int{
+        val isReceita = total() > BigDecimal.ZERO
+        if(isReceita){
+            return corReceita(context)
+        }else {
+            return corDespesa(context)
+        }
+
+    }
+
+    private fun getColor(context: Context, cor: Int): Int {
+        return ContextCompat.getColor(context, cor)
     }
 
     private fun somar(tipo: Tipo): BigDecimal {
