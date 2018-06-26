@@ -11,7 +11,7 @@ import java.math.BigDecimal
 
 class Resumo(private val transacoes: List<Transacao>) {
 
-    fun receita(): BigDecimal{
+    fun receita(): BigDecimal {
         return somar(RECEITA)
     }
 
@@ -19,7 +19,7 @@ class Resumo(private val transacoes: List<Transacao>) {
         return somar(DESPESA)
     }
 
-    fun total(): BigDecimal{
+    fun total(): BigDecimal {
         return receita().subtract(despesa())
     }
 
@@ -31,14 +31,12 @@ class Resumo(private val transacoes: List<Transacao>) {
         return getColor(context, receita)
     }
 
-    fun corTotal(context: Context): Int{
-        val isReceita = total() > BigDecimal.ZERO
-        if(isReceita){
+    fun corTotal(context: Context): Int {
+        if (total().compareTo(BigDecimal.ZERO) >= 0) {
             return corReceita(context)
-        }else {
+        } else {
             return corDespesa(context)
         }
-
     }
 
     private fun getColor(context: Context, cor: Int): Int {
