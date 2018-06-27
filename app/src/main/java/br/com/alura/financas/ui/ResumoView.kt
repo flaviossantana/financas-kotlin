@@ -21,25 +21,23 @@ class ResumoView(private final val context: Context,
 
     private fun addReceita(){
         with(view.resumo_card_receita){
-            text = resumo.receita().formatarReal()
+            text = resumo.receita.formatarReal()
             setTextColor(resumo.corReceita(context))
         }
     }
 
     private fun addDespesa(){
         with(view.resumo_card_despesa){
-            text = resumo.despesa().formatarReal()
+            text = resumo.despesa.formatarReal()
             setTextColor(resumo.corDespesa(context))
         }
     }
 
     private fun calcularTotal() {
         with(view.resumo_card_total){
-            text = resumo.total().formatarReal()
+            text = resumo.total.formatarReal()
             setTextColor(resumo.corTotal(context))
         }
     }
-
-
 
 }
