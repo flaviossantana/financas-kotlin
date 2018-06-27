@@ -37,7 +37,6 @@ class Resumo(private val transacoes: List<Transacao>) {
         }
 
         return corDespesa(context)
-
     }
 
     private fun getColor(context: Context, cor: Int): Int {
@@ -45,13 +44,7 @@ class Resumo(private val transacoes: List<Transacao>) {
     }
 
     private fun somar(tipo: Tipo): BigDecimal {
-        var total = BigDecimal.ZERO
-        for (transacao in transacoes) {
-            if (transacao.isTipo(tipo)) {
-                total = total.plus(transacao.valor)
-            }
-        }
-        return total
+        return BigDecimal(transacoes.filter { it.isTipo(tipo) }.sumByDouble { it.valor.toDouble() })
     }
 
 }
