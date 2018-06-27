@@ -32,11 +32,12 @@ class Resumo(private val transacoes: List<Transacao>) {
     }
 
     fun corTotal(context: Context): Int {
-        if (total().compareTo(BigDecimal.ZERO) >= 0) {
+        if (total() >= BigDecimal.ZERO) {
             return corReceita(context)
-        } else {
-            return corDespesa(context)
         }
+
+        return corDespesa(context)
+
     }
 
     private fun getColor(context: Context, cor: Int): Int {

@@ -14,18 +14,24 @@ class ResumoView(private final val context: Context,
     private val resumo: Resumo = Resumo(transacoes)
 
     fun addReceita(){
-        view.resumo_card_receita.setText(resumo.receita().formatarReal())
-        view.resumo_card_receita.setTextColor(resumo.corReceita(context))
+        with(view.resumo_card_receita){
+            text = resumo.receita().formatarReal()
+            setTextColor(resumo.corReceita(context))
+        }
     }
 
     fun addDespesa(){
-        view.resumo_card_despesa.setText(resumo.despesa().formatarReal())
-        view.resumo_card_despesa.setTextColor(resumo.corDespesa(context))
+        with(view.resumo_card_despesa){
+            text = resumo.despesa().formatarReal()
+            setTextColor(resumo.corDespesa(context))
+        }
     }
 
     fun calcularTotal() {
-        view.resumo_card_total.setText(resumo.total().formatarReal())
-        view.resumo_card_total.setTextColor(resumo.corTotal(context))
+        with(view.resumo_card_total){
+            text = resumo.total().formatarReal()
+            setTextColor(resumo.corTotal(context))
+        }
     }
 
 }
