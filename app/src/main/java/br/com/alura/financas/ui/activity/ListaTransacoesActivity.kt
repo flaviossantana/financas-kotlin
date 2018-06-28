@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.DatePicker
 import android.widget.Toast
 import br.com.alura.financas.R
@@ -65,9 +66,14 @@ class ListaTransacoesActivity : AppCompatActivity() {
                         .show()
             }
 
+            val arrayAdapter = ArrayAdapter.createFromResource(this, R.array.categorias_de_receita, android.R.layout.simple_spinner_dropdown_item)
+            view.form_transacao_categoria.adapter = arrayAdapter
+
             AlertDialog.Builder(this)
                     .setTitle(R.string.adiciona_receita)
                     .setView(view)
+                    .setPositiveButton("Adicionar", null)
+                    .setNegativeButton("Cancelar", null)
                     .show()
 
         })
