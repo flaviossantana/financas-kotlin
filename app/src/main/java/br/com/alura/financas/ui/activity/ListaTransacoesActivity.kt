@@ -1,13 +1,17 @@
 package br.com.alura.financas.ui.activity
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
 import android.widget.Toast
 import br.com.alura.financas.R
+import br.com.alura.financas.R.string.ano
+import br.com.alura.financas.R.string.mes
 import br.com.alura.financas.enum.Tipo.DESPESA
 import br.com.alura.financas.enum.Tipo.RECEITA
 import br.com.alura.financas.extension.diaMesAno
@@ -50,6 +54,16 @@ class ListaTransacoesActivity : AppCompatActivity() {
 
             val hoje = Calendar.getInstance()
             view.form_transacao_data.setText(hoje.diaMesAno())
+            view.form_transacao_data.setOnClickListener {
+                DatePickerDialog(this,
+                        DatePickerDialog.OnDateSetListener { datePicker: DatePicker, ano: Int, mes: Int, dia: Int ->
+                            val dataSelecionada = Calendar.getInstance()
+                            dataSelecionada.set(ano, mes, dia)
+                            view.form_transacao_data.setText(dataSelecionada.diaMesAno())
+                        },
+                        hoje.get(Calendar.YEAR), hoje.get(Calendar.MONTH), hoje.get(Calendar.DATE))
+                        .show()
+            }
 
             AlertDialog.Builder(this)
                     .setTitle(R.string.adiciona_receita)
