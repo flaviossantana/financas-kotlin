@@ -3,6 +3,7 @@ package br.com.alura.financas.ui.activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.widget.Toast
 import br.com.alura.financas.R
 import br.com.alura.financas.ui.adapter.ListatTrancasoesAdapter
 import br.com.alura.financas.enum.Tipo.DESPESA
@@ -28,6 +29,15 @@ class ListaTransacoesActivity : AppCompatActivity() {
         configResumo(transacoes)
 
         lista_transacoes_listview.adapter = ListatTrancasoesAdapter(transacoes, this)
+
+        lista_transacoes_adiciona_receita.setOnClickListener(View.OnClickListener {
+            Toast.makeText(this, "Adicionou Receita!", Toast.LENGTH_LONG).show()
+        })
+
+        lista_transacoes_adiciona_despesa.setOnClickListener(View.OnClickListener {
+            Toast.makeText(this, "Adicionou Despesa!", Toast.LENGTH_LONG).show()
+        })
+
     }
 
     private fun configResumo(transacoes: List<Transacao>) {
