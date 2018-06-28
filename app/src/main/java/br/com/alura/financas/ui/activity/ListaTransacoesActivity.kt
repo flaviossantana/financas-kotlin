@@ -11,12 +11,15 @@ import br.com.alura.financas.R
 import br.com.alura.financas.ui.adapter.ListatTrancasoesAdapter
 import br.com.alura.financas.enum.Tipo.DESPESA
 import br.com.alura.financas.enum.Tipo.RECEITA
+import br.com.alura.financas.extension.diaMesAno
 import br.com.alura.financas.extension.formatarReal
 import br.com.alura.financas.model.Transacao
 import br.com.alura.financas.ui.ResumoView
 import kotlinx.android.synthetic.main.activity_lista_transacoes.*
+import kotlinx.android.synthetic.main.form_transacao.view.*
 import kotlinx.android.synthetic.main.resumo_card.*
 import java.math.BigDecimal
+import java.util.*
 
 
 class ListaTransacoesActivity : AppCompatActivity() {
@@ -46,6 +49,9 @@ class ListaTransacoesActivity : AppCompatActivity() {
             Toast.makeText(this, "Adicionou Receita!", Toast.LENGTH_LONG).show()
 
             val view = LayoutInflater.from(this).inflate(R.layout.form_transacao, it.parent as ViewGroup, false)
+
+            val hoje = Calendar.getInstance()
+            view.form_transacao_data.setText(hoje.diaMesAno())
 
             AlertDialog.Builder(this)
                     .setTitle(R.string.adiciona_receita)
